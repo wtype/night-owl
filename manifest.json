@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Night Owl",
+  "version": "1.0",
+  "description": "Dark mode, everwhere.",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["owl.js"]
+    }
+  ]
+}
