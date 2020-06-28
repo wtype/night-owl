@@ -32,8 +32,7 @@ function calculateBrightness(color) {
     .slice(0, 3);
 
   cleanColor.forEach(value => {
-    value.trim();
-    colorValues.push(+value);
+    colorValues.push(+value.trim());
   });
 
   if (colorValues.length !== 3) {
