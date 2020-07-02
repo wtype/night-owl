@@ -1,9 +1,15 @@
-const darkenImages = () =>
-  [...document.images].forEach(image => (image.style.filter = `brightness(0.75)`));
-
 function getColors() {
-  const colors = [];
+  // const hexRegex = /^#([a-f0-9]{3}|[a-f0-9]{4}(?:[a-f0-9]{2}){0,2})\b$/;
+  // const hslRegex = /^hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)$/;
+  // const hslaRegex = /^hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)$/;
+  // const rgbaRegex = /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/;
   const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
+
+  // const fullColorRegex = new RegExp(
+  //   hexRegex + '|' + rgbRegex + '|' + rgbaRegex + '|' + hslRegex + '|' + hslaRegex, 'ig'
+  // );
+
+  const colors = [];
   const elements = document.getElementsByTagName('*');
 
   for (const element of elements) {
@@ -55,6 +61,9 @@ function replaceColor(c) {
   console.log(color, brightness);
 }
 
+const darkenImages = () =>
+  [...document.images].forEach(image => (image.style.filter = `brightness(0.75)`));
+
 function go() {
   const colors = getColors();
   const withBrightness = [];
@@ -63,3 +72,4 @@ function go() {
 }
 
 go();
+
