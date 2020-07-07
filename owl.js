@@ -1,13 +1,12 @@
 function getColors() {
-  // const hexRegex = /^#([a-f0-9]{3}|[a-f0-9]{4}(?:[a-f0-9]{2}){0,2})\b$/;
-  // const hslRegex = /^hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)$/;
-  // const hslaRegex = /^hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)$/;
-  // const rgbaRegex = /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/;
-  const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
+  const hexRegex = '#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\\b'
+  const hslRegex = 'hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)';
+  const hslaRegex = 'hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)';
+  const rgbaRegex = 'rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)';
+  const rgbRegex = 'rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)';
 
-  // const fullColorRegex = new RegExp(
-  //   hexRegex + '|' + rgbRegex + '|' + rgbaRegex + '|' + hslRegex + '|' + hslaRegex, 'ig'
-  // );
+  const allColorRegex = hexRegex + '|' + rgbRegex + '|' + rgbaRegex + '|' + hslRegex + '|' + hslaRegex;
+  const fullColorRegex = new RegExp(allColorRegex, 'ig');
 
   const colors = [];
   const elements = document.getElementsByTagName('*');
@@ -18,7 +17,7 @@ function getColors() {
     for (const style of elementStyles) {
       const value = elementStyles[style];
 
-      if (value && value.match(rgbRegex) && !colors.includes(value)) {
+      if (value && value.match(fullColorRegex) && !colors.includes(value)) {
         colors.push(value);
       }
     }
