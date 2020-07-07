@@ -56,7 +56,7 @@ function calculateBrightness(color) {
 
   if (colorValues.length !== 3) {
     throw new Error(
-      `Needing three color values to be passed in to calculate brightness. Received: ${colorValues.length}`
+      `calculateBrightness expected 3 colors values. Received: ${colorValues.length}`
     );
   }
 
