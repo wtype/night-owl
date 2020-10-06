@@ -6,10 +6,14 @@ function getColors() {
   const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
   // need to check which browsers coerce colors to rgb and rgba
   const allColorRegex =
-    hexRegex.source + '|' +
-    rgbRegex.source + '|' +
-    rgbaRegex.source + '|' +
-    hslRegex.source + '|' +
+    hexRegex.source +
+    '|' +
+    rgbRegex.source +
+    '|' +
+    rgbaRegex.source +
+    '|' +
+    hslRegex.source +
+    '|' +
     hslaRegex.source;
 
   const fullColorRegex = new RegExp(allColorRegex, 'ig');
@@ -78,8 +82,7 @@ const darkenImages = () =>
   [...document.images].forEach(image => (image.style.filter = `brightness(0.75)`));
 
 function go() {
-  const colors = getColors()[0];
-  const elements = getColors()[1];
+  const [colors, elements] = getColors();
   console.log(elements);
 
   const withBrightness = [];
@@ -88,4 +91,3 @@ function go() {
 }
 
 go();
-
