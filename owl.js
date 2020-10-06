@@ -59,9 +59,7 @@ function calculateBrightness(color) {
   });
 
   if (colorValues.length !== 3) {
-    throw new Error(
-      `calculateBrightness expected 3 colors values. Received: ${colorValues.length}`
-    );
+    throw new Error(`calculateBrightness expected 3 color values. Received: ${colorValues.length}`);
   }
 
   const brightness = Number(
