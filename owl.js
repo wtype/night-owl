@@ -1,20 +1,38 @@
 function getColors() {
-  const hexRegex = /^#([a-f0-9]{3}|[a-f0-9]{4}(?:[a-f0-9]{2}){0,2})\b$/;
-  const hslRegex = /^hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)$/;
-  const hslaRegex = /^hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)$/;
-  const rgbaRegex = /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/;
-  const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
+  const colorRegex = {
+    hexRegex: /^#([a-f0-9]{3}|[a-f0-9]{4}(?:[a-f0-9]{2}){0,2})\b$/,
+    hslRegex: /^hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)$/,
+    hslaRegex: /^hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)$/,
+    rgbaRegex: /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/,
+    rgbRegex: /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/,
+  };
+  // const hexRegex = /^#([a-f0-9]{3}|[a-f0-9]{4}(?:[a-f0-9]{2}){0,2})\b$/;
+  // const hslRegex = /^hsl\(\s*(\d+)\s*,\s*(\d*(?:\.\d+)?%)\s*,\s*(\d*(?:\.\d+)?%)\)$/;
+  // const hslaRegex = /^hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*(\d*(?:\.\d+)?)\)$/;
+  // const rgbaRegex = /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/;
+  // const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
   // need to check which browsers coerce colors to rgb and rgba
+  // const allColorRegex =
+  //   hexRegex.source +
+  //   '|' +
+  //   rgbRegex.source +
+  //   '|' +
+  //   rgbaRegex.source +
+  //   '|' +
+  //   hslRegex.source +
+  //   '|' +
+  //   hslaRegex.source;
+
   const allColorRegex =
-    hexRegex.source +
+    colorRegex.hexRegex.source +
     '|' +
-    rgbRegex.source +
+    colorRegex.rgbRegex.source +
     '|' +
-    rgbaRegex.source +
+    colorRegex.rgbaRegex.source +
     '|' +
-    hslRegex.source +
+    colorRegex.hslRegex.source +
     '|' +
-    hslaRegex.source;
+    colorRegex.hslaRegex.source;
 
   const fullColorRegex = new RegExp(allColorRegex, 'ig');
 
